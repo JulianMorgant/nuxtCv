@@ -56,8 +56,27 @@ export default {
     '@nuxtjs/auth-next'
   ],
   
+  axios: {
+    baseURL: 'http://localhost:5000/'
+  },
   auth: {
-    // Options
+    localStorage: false,
+    cookie: {
+      prefix: 'auth.',
+      options: {
+        path: '/',
+        maxAge: 10800
+      }
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'access_token' },
+          user: { url: 'me', method: 'get', propertyName: 'content' },
+          logout: false
+        }
+      }
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
