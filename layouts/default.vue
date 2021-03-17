@@ -1,10 +1,26 @@
 <template>
   <div>
+    <nav class="navbar navbar-dark bg-dark">
+      <ul class="nav">
+        <li class="nav-item">
+          <nuxt-link class="nav-link" to="/">Accueil</nuxt-link>
+        </li>
+        <li class="nav-item">
+          <nuxt-link class="nav-link" to="/dev">Dev</nuxt-link>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
     <Nuxt />
+    </div>
   </div>
 </template>
 
 <style>
+/*
+
+// old css
+
 html {
   font-family:
     'Source Sans Pro',
@@ -59,4 +75,5 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+*/
 </style>
