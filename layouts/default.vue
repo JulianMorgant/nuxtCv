@@ -8,10 +8,13 @@
         <li class="nav-item">
           <nuxt-link class="nav-link" to="/dev">Dev</nuxt-link>
         </li>
+        <li class="nav-item">
+          <nuxt-link class="nav-link" to="/login">Login</nuxt-link>
+        </li>
       </ul>
     </nav>
     <div class="container">
-    <Nuxt />
+      <Nuxt />
     </div>
   </div>
 </template>
