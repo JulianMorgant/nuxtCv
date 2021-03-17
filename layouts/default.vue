@@ -11,6 +11,9 @@
         <li class="nav-item">
           <nuxt-link class="nav-link" to="/login">Login</nuxt-link>
         </li>
+                <li class="nav-item">
+          <nuxt-link class="nav-link" to="/admin">Admin</nuxt-link>
+        </li>
       </ul>
     </nav>
     <div class="container">
