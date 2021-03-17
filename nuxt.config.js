@@ -72,7 +72,7 @@ export default {
       local: {
         endpoints: {
           login: { url: 'login', method: 'post', propertyName: 'access_token' },
-          user: { url: 'me', method: 'get', propertyName: 'content' },
+          user: { url: 'user', method: 'get', propertyName: 'content' },
           logout: false
         }
       }

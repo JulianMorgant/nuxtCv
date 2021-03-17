@@ -1,5 +1,5 @@
 <template>
-  <h1 class="display-1">Home</h1>
+  <h1 class="display-1">Home - {{ loggedInUser.username }}</h1>
 </template>
 
 <script>
