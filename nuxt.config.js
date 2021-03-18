@@ -77,12 +77,14 @@ export default {
           type: 'Bearer'
         },  
         user :{
-          property: 'user',
+           property: 'user',
+          //property: false,
           autofetch: true
         },
         endpoints: {
           login: { url: "login", method: "post", propertyName: "token" },
-          user: false,  //{ url: "user", method: "get", propertyName: "data" },
+          //user: false,
+          user : { url: "user", method: "get", propertyName: "data" },
           logout: false
         }
       }
