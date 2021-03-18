@@ -4,7 +4,7 @@
       <div class="row mb-3">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" v-model="login.email" />
+          <input type="email" class="form-control" v-model="credential.email" />
         </div>
       </div>
       <div class="row mb-3">
@@ -14,8 +14,8 @@
         <div class="col-sm-10">
           <input
             type="password"
-            class="form-control"
-            v-model="login.password"
+            class="form-control" 
+            v-model="credential.password"
           />
         </div>
       </div>
@@ -29,7 +29,7 @@
 export default {
   data() {
     return {
-      login: {
+      credential: {
         email: "",
         password: "",
       },
@@ -39,8 +39,8 @@ export default {
     async userLogin() {
       try {
         let response = await this.$auth.loginWith("local", {
-          data: this.login,
-        });
+          data: this.credential,
+        }).then(() => this.$toast.success('Logged In!'));
         console.log(response);
       } catch (err) {
         console.log(err);

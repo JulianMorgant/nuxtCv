@@ -10,6 +10,9 @@
 
      <!--    <skill-card v-for="skill in skills" v-bind="skill" v-on:update="updateSkillCard"/> -->
     </div>
+    <h2>
+      {{user}}
+    </h2>
   </div>
 </template>
 
@@ -28,6 +31,7 @@ export default {
         { id: "2", name: "NodeJS", text: "Back-end node js" },
         { id: "3", name: "Nuxt", text: "Ecosystème Nuxt" },
       ],
+      user: this.$auth.loggedIn
     };
   },
   methods : {
