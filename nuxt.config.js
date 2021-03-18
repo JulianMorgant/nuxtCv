@@ -71,9 +71,18 @@ export default {
     },
     strategies: {
       local: {
+        token: {
+          property:'token',
+          require: true,
+          type: 'Bearer'
+        },  
+        user :{
+          property: 'user',
+          autofetch: true
+        },
         endpoints: {
           login: { url: "login", method: "post", propertyName: "token" },
-          user: { url: "user", method: "get", propertyName: "data" },
+          user: false,  //{ url: "user", method: "get", propertyName: "data" },
           logout: false
         }
       }

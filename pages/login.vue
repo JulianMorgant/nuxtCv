@@ -40,10 +40,15 @@ export default {
       try {
         let response = await this.$auth.loginWith("local", {
           data: this.credential,
-        }).then(() => this.$toast.success('Logged In!'));
+        });
+        console.log ('++response to loginwith++++');
         console.log(response);
+        // redirection home page
+        this.$router.push('/')
       } catch (err) {
+        console.log ('+++');   
         console.log(err);
+        console.log ('+++');  
       }
     },
   },
