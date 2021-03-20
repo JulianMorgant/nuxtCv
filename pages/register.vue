@@ -1,96 +1,211 @@
 <template>
-    <form>
-  <fieldset>
-    <legend>Legend</legend>
-    <div class="form-group row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
-        <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="email@example.com">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-      <label for="exampleSelect1">Example select</label>
-      <select class="form-control" id="exampleSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="exampleSelect2">Example multiple select</label>
-      <select multiple="" class="form-control" id="exampleSelect2">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="exampleTextarea">Example textarea</label>
-      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputFile">File input</label>
-      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-    </div>
-    <fieldset class="form-group">
-      <legend>Radio buttons</legend>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-          Option one is this and that—be sure to include why it's great
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-          Option two can be something else and selecting it will deselect option one
-        </label>
-      </div>
-      <div class="form-check disabled">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
-          Option three is disabled
-        </label>
-      </div>
-    </fieldset>
-    <fieldset class="form-group">
-      <legend>Checkboxes</legend>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="" checked="">
-          Option one is this and that—be sure to include why it's great
-        </label>
-      </div>
-      <div class="form-check disabled">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="" disabled="">
-          Option two is disabled
-        </label>
-      </div>
-    </fieldset>
-    <fieldset class="form-group">
-      <legend>Sliders</legend>
-      <label for="customRange1">Example range</label>
-      <input type="range" class="custom-range" id="customRange1">
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </fieldset>
-</form>
+  <!--   
+
+
+https://bootswatch.com/lux/
 
 
 
+-->
+
+  <form @submit.prevent="submitUser">
+    <fieldset>
+      <legend>Register</legend>
+
+      <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+          v-model="formData.email"
+        />
+        <small id="emailHelp" class="form-text text-muted">{{
+          helpers.email
+        }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="inputPseudo">Pseudo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputPseudo"
+          aria-describedby="pseudoHelp"
+          placeholder="Enter pseudo"
+          v-model="formData.pseudo"
+        />
+        <small id="pseudoHelp" class="form-text text-muted">{{
+          helpers.pseudo
+        }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputName"
+          aria-describedby="nameHelp"
+          placeholder="Enter name"
+          v-model="formData.name"
+        />
+        <small id="nameHelp" class="form-text text-muted">{{
+          helpers.name
+        }}</small>
+      </div>
+      <div class="form-group">
+        <label for="inputFirstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputFirstName"
+          aria-describedby="firstNameHelp"
+          placeholder="Enter first name"
+          v-model="formData.firstname"
+        />
+        <small id="firstNameHelp" class="form-text text-muted">{{
+          helpers.firstname
+        }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="inputPassword1">Password</label>
+        <input
+          v-bind:disabled="options.disablePassword"
+          type="password"
+          class="form-control"
+          id="inputPassword1"
+          aria-describedby="password1Help"
+          placeholder="Password"
+          v-model="formData.password1"
+        />
+        <small id="password1Help" class="form-text text-muted">{{
+          helpers.password1
+        }}</small>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword2">Verify Password</label>
+        <input
+          v-bind:disabled="options.disablePassword"
+          type="password"
+          class="form-control"
+          id="inputPassword2"
+          aria-describedby="password2Help"
+          placeholder="Password"
+          v-model="formData.password2"
+        />
+        <small id="password2Help" class="form-text text-muted">{{
+          helpers.password2
+        }}</small>
+      </div>
+
+      <fieldset class="form-group">
+        <legend>Role(s)</legend>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="Guest"
+              checked=""
+              v-model="formData.roles"
+            />
+            Guest
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <label class="form-check-label">
+            <input
+              v-bind:disabled="options.disableRoleUser"
+              class="form-check-input"
+              type="checkbox"
+              value="User"
+              v-model="formData.roles"
+            />
+            User
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <label class="form-check-label">
+            <input
+              v-bind:disabled="options.disableRoleAdmin"
+              class="form-check-input"
+              type="checkbox"
+              value="Admin"
+              v-model="formData.roles"
+            />
+            Admin
+          </label>
+        </div>
+      </fieldset>
+      <div class="center">
+        <button type="submit" class="btn btn-primary large">Submit</button>
+      </div>
+    </fieldset>
+  </form>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      options: {
+        disablePseudo: false,
+        disablePassword: true,
+        disableRoleUser: false,
+        disableRoleAdmin: true,
+      },
+      helpers: {
+        name: "",
+        firstname: "",
+        pseudo: "Unique",
+        email: "We'll never share your email with anyone else.",
+        password1: "",
+        password2: "",
+        roles: [],
+      },
+      defaultHelpers: {
+        //TODO with init function
+      },
+      formData: {
+        pseudo: "",
+        name: "",
+        firstname: "",
+        email: "",
+        password1: "",
+        password2: "",
+        roles: [],
+      },
+
+      loggedIn: this.$auth.loggedIn,
+      user: this.$auth.user,
+    };
+  },
+  methods: {
+    async submitUser() {
+      try {
+        console.log("=> Submit User");
+      } catch (err) {
+        console.log("+++");
+        console.log(err);
+        console.log("+++");
+      }
+    },
+    //     updateSkillCard(name,text) {
+    //         console.log (`update ${name} - ${text}`)
+  },
+};
+</script>
+
+<style scoped>
+.center {
+  text-align: center;
+}
+
+.large {
+  width: 100%;
+}
+</style>
