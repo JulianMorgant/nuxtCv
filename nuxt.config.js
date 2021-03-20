@@ -46,7 +46,9 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~/plugins/repository.js'
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -84,7 +86,7 @@ export default {
         endpoints: {
           login: { url: "login", method: "post", propertyName: "token" },
           //user: false,
-          user : { url: "user", method: "get", propertyName: "data" },
+          user : { url: "me", method: "get", propertyName: "data" },
           logout: false
         }
       }

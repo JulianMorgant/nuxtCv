@@ -14,10 +14,6 @@
                 <li class="nav-item">
           <nuxt-link class="nav-link" to="/admin">Admin</nuxt-link>
         </li>
-        <li v-if="isAuthenticated">
-          <a>{{loggedInUser.pseudo}}</a>
-
-        </li>
       </ul>
     </nav>
     <div class="container">
@@ -25,15 +21,13 @@
     </div>
   </div>
 </template>
-
+  
 <script>
 
 import { mapGetters } from 'vuex'
 
 export default {
-  computed: {
-    ...mapGetters(['isAuthenticated', 'loggedInUser'])
-  },
+
   methods: {
     async logout() {
       await this.$auth.logout().then(() => {
