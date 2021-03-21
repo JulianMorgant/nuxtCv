@@ -16,7 +16,7 @@
         </li>
               </li>
                 <li class="nav-item">
-          <nuxt-link class="nav-link" to="/register">Register</nuxt-link>
+          <nuxt-link class="nav-link" to="/users/add">Register</nuxt-link>
         </li>
       </ul>
     </nav>

@@ -8,10 +8,9 @@
     <div class="card-deck">
       <user-card class="myCard"
         v-for="user in users"
-        v-bind:key="user.id"
-        v-bind:pseudo="user.pseudo"
-        v-bind:email="user.email"
-        v-on:update="updateUserCard"
+        v-bind:key="user._id"
+        v-bind:user="user"
+        v-on:click="editUserCard"
       ></user-card>
     </div>
   </div>
@@ -35,8 +34,9 @@ export default {
  
 
   methods: {
-    updateUserCard(pseudo, email) {
-      console.log(`update ${pseudo} - ${email}`);
+    editUserCard(user) {
+      console.log(`edit ${user._id} - ${user.pseudo} - ${user.email}`);
+      this.$router.push('/register')
     },
   },
 
