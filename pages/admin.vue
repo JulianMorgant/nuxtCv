@@ -2,11 +2,12 @@
 
 
 <template>
-  <div class= "mb-3">
+  <div class="mb-3">
     <h1 class="display-1">Admin</h1>
     <h2>USERS</h2>
     <div class="card-deck">
-      <user-card class="myCard"
+      <user-card
+        class="myCard"
         v-for="user in users"
         v-bind:key="user._id"
         v-bind:user="user"
@@ -20,32 +21,32 @@
 import UserCard from "../components/UserCard";
 
 export default {
+
   component: {
     UserCard,
   },
+  
   middleware: "auth",
 
- 
   data() {
     return {
-     users: [],
+      users: [],
     };
   },
- 
 
   methods: {
     editUserCard(user) {
       console.log(`edit ${user._id} - ${user.pseudo} - ${user.email}`);
-      this.$router.push('/register')
+      this.$router.push(`/users/${user._id}`);
     },
   },
 
-async asyncData(ctx) {
-  return {
-    users : await ctx.app.$repositories.user.index()
-  }
-}
-/*
+  async asyncData(ctx) {
+    return {
+      users: await ctx.app.$repositories.user.index(),
+    };
+  },
+  /*
   asyncData({ app, $repositories }) {
     console.log("**************");
     let users = [];
@@ -54,10 +55,6 @@ async asyncData(ctx) {
     return { users : data.res };
   },
 */
-
-
-
-
 
   /*
   async fetch() {
@@ -73,8 +70,7 @@ async asyncData(ctx) {
 .card-deck {
   min-width: 150px;
 }
-.myCard{
+.myCard {
   min-width: 250px;
 }
-
 </style>

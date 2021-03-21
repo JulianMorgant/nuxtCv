@@ -8,9 +8,10 @@ https://bootswatch.com/lux/
 
 -->
 
-  <form @submit.prevent="submitUser">
+  <!-- <form @submit.prevent="submitUser"> -->
+  <form>
     <fieldset>
-      <legend>Register</legend>
+      <legend>Register {{ formData.user }}</legend>
 
       <div class="form-group">
         <label for="inputEmail">Email address</label>
@@ -20,7 +21,7 @@ https://bootswatch.com/lux/
           id="inputEmail"
           aria-describedby="emailHelp"
           placeholder="Enter email"
-          v-model="formData.email"
+          v-model="formData.user.email"
         />
         <small id="emailHelp" class="form-text text-muted">{{
           helpers.email
@@ -35,7 +36,7 @@ https://bootswatch.com/lux/
           id="inputPseudo"
           aria-describedby="pseudoHelp"
           placeholder="Enter pseudo"
-          v-model="formData.pseudo"
+          v-model="formData.user.pseudo"
         />
         <small id="pseudoHelp" class="form-text text-muted">{{
           helpers.pseudo
@@ -50,7 +51,7 @@ https://bootswatch.com/lux/
           id="inputName"
           aria-describedby="nameHelp"
           placeholder="Enter name"
-          v-model="formData.name"
+          v-model="formData.user.name"
         />
         <small id="nameHelp" class="form-text text-muted">{{
           helpers.name
@@ -64,7 +65,7 @@ https://bootswatch.com/lux/
           id="inputFirstName"
           aria-describedby="firstNameHelp"
           placeholder="Enter first name"
-          v-model="formData.firstname"
+          v-model="formData.user.firstname"
         />
         <small id="firstNameHelp" class="form-text text-muted">{{
           helpers.firstname
@@ -111,7 +112,7 @@ https://bootswatch.com/lux/
               type="checkbox"
               value="Guest"
               checked=""
-              v-model="formData.roles"
+              v-model="formData.user.roles"
             />
             Guest
           </label>
@@ -123,7 +124,7 @@ https://bootswatch.com/lux/
               class="form-check-input"
               type="checkbox"
               value="User"
-              v-model="formData.roles"
+              v-model="formData.user.roles"
             />
             User
           </label>
@@ -135,14 +136,25 @@ https://bootswatch.com/lux/
               class="form-check-input"
               type="checkbox"
               value="Admin"
-              v-model="formData.roles"
+              v-model="formData.user.roles"
             />
             Admin
           </label>
         </div>
       </fieldset>
       <div class="center">
-        <button type="submit" class="btn btn-primary large">Submit</button>
+        <button
+          v-on:click="updateUser(formData.user)"
+          class="btn btn-primary large"
+        >
+          Update
+        </button>
+        <button
+          v-on:click="deleteUser(formData.user._id)"
+          class="btn btn-danger large"
+        >
+          Delete
+        </button>
       </div>
     </fieldset>
   </form>
@@ -150,6 +162,8 @@ https://bootswatch.com/lux/
 
 <script>
 export default {
+  middleware: "auth",
+
   data() {
     return {
       options: {
@@ -171,13 +185,9 @@ export default {
         //TODO with init function
       },
       formData: {
-        pseudo: "",
-        name: "",
-        firstname: "",
-        email: "",
+        user: {}, //TODO passwords ?
         password1: "",
         password2: "",
-        roles: [],
       },
 
       loggedIn: this.$auth.loggedIn,
@@ -185,18 +195,59 @@ export default {
     };
   },
   methods: {
-    async submitUser() {
-      try { 
+    async updateUser(user) {
+      const tempUser = {};
+
+      ({
+        name: tempUser.name,
+        firstname: tempUser.firstname,
+        pseudo: tempUser.pseudo,
+        email: tempUser.email,
+        password: tempUser.password,
+        roles: tempUser.roles,
+        _id: tempUser.id
+      } = user);
+
+      try {
         // TODO data control
-        console.log("=> Submit User");
+        console.log("=> Update User");
+        console.log(tempUser);
+        return this.$repositories.user.update(tempUser, tempUser.id);
       } catch (err) {
         console.log("+++");
         console.log(err);
         console.log("+++");
       }
     },
-    //     updateSkillCard(name,text) {
-    //         console.log (`update ${name} - ${text}`)
+    async deleteUser(id) {
+      console.log(`Delete User : ${id}`);
+      try {
+        await this.$repositories.user.delete(id);
+        this.$router.push(`/admin`);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+  async asyncData(ctx) {
+    console.log("+++++++++");
+    console.log(ctx.params.id);
+
+    try {
+      return {
+        formData: {
+          user: await ctx.app.$repositories.user.show(ctx.params.id),
+        },
+      };
+    } catch (err) {
+      console.log(err);
+      return {
+        // if id false return error 501 => TODO err not found
+        formData: {
+          user: {},
+        },
+      };
+    }
   },
 };
 </script>
