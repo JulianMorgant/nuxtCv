@@ -1,6 +1,6 @@
 <template>
   <fieldset>
-    <legend>{{ title }}</legend>
+    <legend>{{ data.title }}</legend>
 
     <div class="form-group">
       <label for="inputEmail">Email address</label>
@@ -10,10 +10,10 @@
         id="inputEmail"
         aria-describedby="emailHelp"
         placeholder="Enter email"
-        v-model="formData.user.email"
+        v-model="data.formData.user.email"
       />
       <small id="emailHelp" class="form-text text-muted">{{
-        helpers.email
+        data.helpers.email
       }}</small>
     </div>
 
@@ -25,25 +25,25 @@
         id="inputPseudo"
         aria-describedby="pseudoHelp"
         placeholder="Enter pseudo"
-        v-model="formData.user.pseudo"
+        v-model="data.formData.user.pseudo"
       />
       <small id="pseudoHelp" class="form-text text-muted">{{
-        helpers.pseudo
+        data.helpers.pseudo
       }}</small>
     </div>
 
     <div class="form-group">
-      <label for="inputName">Name</label>
+      <label for="inputName">Name</label> 
       <input
         type="text"
         class="form-control"
         id="inputName"
         aria-describedby="nameHelp"
         placeholder="Enter name"
-        v-model="formData.user.name"
+        v-model="data.formData.user.name"
       />
       <small id="nameHelp" class="form-text text-muted">{{
-        helpers.name
+        data.helpers.name
       }}</small>
     </div>
     <div class="form-group">
@@ -54,41 +54,41 @@
         id="inputFirstName"
         aria-describedby="firstNameHelp"
         placeholder="Enter first name"
-        v-model="formData.user.firstname"
+        v-model="data.formData.user.firstname"
       />
       <small id="firstNameHelp" class="form-text text-muted">{{
-        helpers.firstname
+        data.helpers.firstname
       }}</small>
     </div>
 
     <div class="form-group">
       <label for="inputPassword1">Password</label>
       <input
-        v-bind:disabled="options.disablePassword"
+        v-bind:disabled="data.options.disablePassword"
         type="password"
         class="form-control"
         id="inputPassword1"
         aria-describedby="password1Help"
         placeholder="Password"
-        v-model="formData.password1"
+        v-model="data.formData.password1"
       />
       <small id="password1Help" class="form-text text-muted">{{
-        helpers.password1
+        data.helpers.password1
       }}</small>
     </div>
     <div class="form-group">
       <label for="inputPassword2">Verify Password</label>
       <input
-        v-bind:disabled="options.disablePassword"
+        v-bind:disabled="data.options.disablePassword"
         type="password"
         class="form-control"
         id="inputPassword2"
         aria-describedby="password2Help"
         placeholder="Password"
-        v-model="formData.password2"
+        v-model="data.formData.password2"
       />
       <small id="password2Help" class="form-text text-muted">{{
-        helpers.password2
+        data.helpers.password2
       }}</small>
     </div>
 
@@ -101,7 +101,7 @@
             type="checkbox"
             value="Guest"
             checked=""
-            v-model="formData.user.roles"
+            v-model="data.formData.user.roles"
           />
           Guest
         </label>
@@ -109,11 +109,11 @@
       <div class="form-check">
         <label class="form-check-label">
           <input
-            v-bind:disabled="options.disableRoleUser"
+            v-bind:disabled="data.options.disableRoleUser"
             class="form-check-input"
             type="checkbox"
             value="User"
-            v-model="formData.user.roles"
+            v-model="data.formData.user.roles"
           />
           User
         </label>
@@ -121,14 +121,14 @@
       <div class="form-check">
         <label class="form-check-label">
           <input
-            v-bind:disabled="options.disableRoleAdmin"
+            v-bind:disabled="data.options.disableRoleAdmin"
             class="form-check-input"
             type="checkbox"
             value="Admin"
-            v-model="formData.user.roles"
+            v-model="data.formData.user.roles"
           />
           Admin
-        </label>
+        </label> 
       </div>
     </fieldset>
   </fieldset>
@@ -138,6 +138,38 @@
 <script>
 export default {
   name: "UserInput",
-  props: ["title", "options","helpers","formData"],
+  props: ["data"],
+  
+  /*
+  data() {
+    return {
+      title: "Title",
+      options: {
+        disablePseudo: false,
+        disablePassword: true,
+        disableRoleUser: false,
+        disableRoleAdmin: true,
+      },
+      helpers: {
+        name: "",
+        firstname: "",
+        pseudo: "Unique",
+        email: "We'll never share your email with anyone else.",
+        password1: "",
+        password2: "",
+        roles: [],
+      },
+      defaultHelpers: {
+        //TODO with init function
+      },
+      formData: {
+        user: {}, //TODO passwords ?
+        password1: "",
+        password2: "",
+      },
+
+    };
+  },
+ */
 };
 </script>
