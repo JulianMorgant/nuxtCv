@@ -11,12 +11,14 @@
         <li class="nav-item">
           <nuxt-link class="nav-link" to="/login">Login</nuxt-link>
         </li>
-                <li class="nav-item">
+        <li class="nav-item">
           <nuxt-link class="nav-link" to="/admin">Admin</nuxt-link>
         </li>
-              </li>
-                <li class="nav-item">
+        <li class="nav-item">
           <nuxt-link class="nav-link" to="/users/add">Register</nuxt-link>
+        </li>
+        <li class="nav-item">
+          <nuxt-link class="nav-link" to="/test">test</nuxt-link>
         </li>
       </ul>
     </nav>
@@ -27,25 +29,20 @@
 </template>
   
 <script>
-
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
-
   methods: {
     async logout() {
       await this.$auth.logout().then(() => {
-   //       message: 'Vous êtes desormais déconnecté(e)',
-   //       type: 'is-info'
-        })
-      }
-    }
-  }
+        //       message: 'Vous êtes desormais déconnecté(e)',
+        //       type: 'is-info'
+      });
+    },
+  },
+};
 
-
-  console.log("....................");
-  
-
+console.log("....................");
 </script>
 
 

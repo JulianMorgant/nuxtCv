@@ -11,7 +11,7 @@ https://bootswatch.com/lux/
   <!-- <form @submit.prevent="submitUser"> -->
   <form>
     <fieldset>
-      <legend>Register {{ formData.user }}</legend>
+      <legend>{{ title }}</legend>
 
       <div class="form-group">
         <label for="inputEmail">Email address</label>
@@ -117,7 +117,7 @@ https://bootswatch.com/lux/
             Guest
           </label>
         </div>
-        <div class="form-check disabled">
+        <div class="form-check">
           <label class="form-check-label">
             <input
               v-bind:disabled="options.disableRoleUser"
@@ -129,7 +129,7 @@ https://bootswatch.com/lux/
             User
           </label>
         </div>
-        <div class="form-check disabled">
+        <div class="form-check">
           <label class="form-check-label">
             <input
               v-bind:disabled="options.disableRoleAdmin"
@@ -142,21 +142,21 @@ https://bootswatch.com/lux/
           </label>
         </div>
       </fieldset>
-      <div class="center">
-        <button
-          v-on:click="updateUser(formData.user)"
-          class="btn btn-primary large"
-        >
-          Update
-        </button>
-        <button
-          v-on:click="deleteUser(formData.user._id)"
-          class="btn btn-danger large"
-        >
-          Delete
-        </button>
-      </div>
     </fieldset>
+    <div class="center">
+      <button
+        v-on:click="updateUser(formData.user)"
+        class="btn btn-primary large"
+      >
+        Update
+      </button>
+      <button
+        v-on:click="deleteUser(formData.user._id)"
+        class="btn btn-danger large"
+      >
+        Delete
+      </button>
+    </div>
   </form>
 </template>
 
@@ -166,6 +166,7 @@ export default {
 
   data() {
     return {
+      title: "Register",
       options: {
         disablePseudo: false,
         disablePassword: true,
@@ -205,7 +206,7 @@ export default {
         email: tempUser.email,
         password: tempUser.password,
         roles: tempUser.roles,
-        _id: tempUser.id
+        _id: tempUser.id,
       } = user);
 
       try {
