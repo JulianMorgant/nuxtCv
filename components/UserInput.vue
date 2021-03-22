@@ -139,37 +139,5 @@
 export default {
   name: "UserInput",
   props: ["data"],
-  
-  /*
-  data() {
-    return {
-      title: "Title",
-      options: {
-        disablePseudo: false,
-        disablePassword: true,
-        disableRoleUser: false,
-        disableRoleAdmin: true,
-      },
-      helpers: {
-        name: "",
-        firstname: "",
-        pseudo: "Unique",
-        email: "We'll never share your email with anyone else.",
-        password1: "",
-        password2: "",
-        roles: [],
-      },
-      defaultHelpers: {
-        //TODO with init function
-      },
-      formData: {
-        user: {}, //TODO passwords ?
-        password1: "",
-        password2: "",
-      },
-
-    };
-  },
- */
 };
 </script>

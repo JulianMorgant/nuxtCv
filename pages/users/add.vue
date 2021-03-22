@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <div>
     <user-input
       v-bind:data="{
         title: title,
@@ -10,19 +10,16 @@
     ></user-input>
     <div class="center">
       <button
-        v-on:click="updateUser(formData.user)"
+        v-on:click="createUser(formData.user)"
         class="btn btn-primary large"
       >
-        Update
+        Submit
       </button>
-      <button
-        v-on:click="deleteUser(formData.user._id)"
-        class="btn btn-danger large"
-      >
-        Delete
+      <button v-on:click="goHome()" class="btn btn-danger large">
+        Go Home
       </button>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -30,6 +27,7 @@ import UserInput from "../../components/UserInput";
 
 export default {
   components: { UserInput },
+
   data() {
     return {
       title: "Register",
@@ -59,6 +57,23 @@ export default {
         password2: "",
       },
     };
+  },
+
+  methods: {
+    async createUser(user) {
+      try{
+      console.log(`create user : ${user.pseudo}`);
+      //this.$router.push(`/`);
+      return true//this.$router.push(`/users/${user._id}`);
+      }catch (err){
+        console.log (err);
+        return err
+      }
+    },
+    async goHome() {
+      console.log(`goHome`);
+      this.$router.push(`/`);
+    },
   },
 };
 </script>
