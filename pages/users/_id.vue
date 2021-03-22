@@ -254,11 +254,5 @@ export default {
 </script>
 
 <style scoped>
-.center {
-  text-align: center;
-}
 
-.large {
-  width: 100%;
-}
 </style>
