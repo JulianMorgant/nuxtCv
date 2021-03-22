@@ -81,7 +81,7 @@ https://bootswatch.com/lux/
           id="inputPassword1"
           aria-describedby="password1Help"
           placeholder="Password"
-          v-model="formData.password1"
+          v-model="formData.user.password"
         />
         <small id="password1Help" class="form-text text-muted">{{
           helpers.password1
@@ -96,7 +96,7 @@ https://bootswatch.com/lux/
           id="inputPassword2"
           aria-describedby="password2Help"
           placeholder="Password"
-          v-model="formData.password2"
+          v-model="formData.passwordCheck"
         />
         <small id="password2Help" class="form-text text-muted">{{
           helpers.password2
@@ -187,8 +187,7 @@ export default {
       },
       formData: {
         user: {}, //TODO passwords ?
-        password1: "",
-        password2: "",
+        passwordCheck: "",
       },
 
       loggedIn: this.$auth.loggedIn,
@@ -250,6 +249,7 @@ export default {
       };
     }
   },
+  
 };
 </script>
 

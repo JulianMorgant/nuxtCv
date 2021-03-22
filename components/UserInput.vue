@@ -11,7 +11,11 @@
         aria-describedby="emailHelp"
         placeholder="Enter email"
         v-model="data.formData.user.email"
+        required
       />
+            <div class="invalid-feedback" id="emailHelp">
+        Please choose an eMail.
+      </div>
       <small id="emailHelp" class="form-text text-muted">{{
         data.helpers.email
       }}</small>
@@ -26,14 +30,18 @@
         aria-describedby="pseudoHelp"
         placeholder="Enter pseudo"
         v-model="data.formData.user.pseudo"
+        required
       />
+      <div class="invalid-feedback" id="pseudoHelp">
+        Please choose a pseudo.
+      </div>
       <small id="pseudoHelp" class="form-text text-muted">{{
         data.helpers.pseudo
       }}</small>
     </div>
 
     <div class="form-group">
-      <label for="inputName">Name</label> 
+      <label for="inputName">Name</label>
       <input
         type="text"
         class="form-control"
@@ -41,7 +49,9 @@
         aria-describedby="nameHelp"
         placeholder="Enter name"
         v-model="data.formData.user.name"
+        required
       />
+      <div class="invalid-feedback" id="nameHelp">Please choose a name.</div>
       <small id="nameHelp" class="form-text text-muted">{{
         data.helpers.name
       }}</small>
@@ -55,7 +65,11 @@
         aria-describedby="firstNameHelp"
         placeholder="Enter first name"
         v-model="data.formData.user.firstname"
+        required
       />
+      <div class="invalid-feedback" id="firstNameHelp">
+        Please choose a first name.
+      </div>
       <small id="firstNameHelp" class="form-text text-muted">{{
         data.helpers.firstname
       }}</small>
@@ -70,8 +84,10 @@
         id="inputPassword1"
         aria-describedby="password1Help"
         placeholder="Password"
-        v-model="data.formData.password1"
+        v-model="data.formData.user.password"
+        required
       />
+      <div class="invalid-feedback" id="password1Help">Not good.</div>
       <small id="password1Help" class="form-text text-muted">{{
         data.helpers.password1
       }}</small>
@@ -85,8 +101,12 @@
         id="inputPassword2"
         aria-describedby="password2Help"
         placeholder="Password"
-        v-model="data.formData.password2"
+        v-model="data.formData.passwordCheck"
+        required
       />
+      <div class="invalid-feedback" id="password2Help">
+        Passwords did not match.
+      </div>
       <small id="password2Help" class="form-text text-muted">{{
         data.helpers.password2
       }}</small>
@@ -128,7 +148,7 @@
             v-model="data.formData.user.roles"
           />
           Admin
-        </label> 
+        </label>
       </div>
     </fieldset>
   </fieldset>
