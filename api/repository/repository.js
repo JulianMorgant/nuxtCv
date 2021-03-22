@@ -4,7 +4,8 @@ export default $axios => resource => ({
     },
   
     create(payload) {
-      return $axios.$post(`/${resource}`, payload)
+      // return $axios.$post(`/${resource}`, payload)
+      return $axios.$put(`/${resource}/`, payload)
     },
   
     show(id) {
