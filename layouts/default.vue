@@ -48,6 +48,15 @@ console.log("....................");
 
 
 <style>
+
+.center {
+  text-align: center;
+}
+
+.large {
+  width: 100%;
+}
+</style>
 /*
 
 // old css
