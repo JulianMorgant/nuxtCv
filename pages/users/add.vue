@@ -97,7 +97,8 @@ export default {
         console.log("valid");
         console.log(newUser);
 
-        //return this.$repositories.user.create(newUser);
+        return this.$repositories.user.create(newUser);
+        
       } catch (err) {
         console.log(err);
         return { succes: false, err: err };
