@@ -20,6 +20,18 @@
 </template>
 
 <script>
+
+export default {
+  name : "FiveStars",
+  props: ["starsNumber", "starsLabel"],
+  data() {
+
+   return {
+      
+      }
+    }
+
+};
 </script>
 
 <style scoped>
