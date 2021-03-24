@@ -1,21 +1,20 @@
 <template>
-  <user-input
-    v-bind:data="{
-      title: title,
-      options: options,
-      helpers: helpers,
-      formData: formData,
-    }"
-  ></user-input>
+  
+<five-stars>
+</five-stars>
+
 </template>
 
 <script>
+import FiveStars from '../components/FiveStars.vue';
 import UserInput from "../components/UserInput";
 
 export default {
   components: { UserInput },
+  components: {FiveStars},
   data() {
-    return {
+
+   return {
       title: "Title",
       options: {
         disablePseudo: false,
