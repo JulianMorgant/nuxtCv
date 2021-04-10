@@ -3,31 +3,30 @@
     <div class="row">
       <div class="col">
         <img
-          src="https://fr.nuxtjs.org/logos/nuxt-emoji.png"
+          v-bind:src="card.image"
           class="img-thumbnail"
           alt=""
         />
       </div>
       <div class="col">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">{{card.title}}</h5>
       </div>
     </div>
     <div class="card-body">
       <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+        {{card.text}}
       </p>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <five-stars v-bind:starsData="data.stars_1"></five-stars>
+        <five-stars v-bind:starsData="card.stars_1"></five-stars>
       </li>
       <li class="list-group-item">
-        <five-stars v-bind:starsData="data.stars_2"></five-stars>
+        <five-stars v-bind:starsData="card.stars_2"></five-stars>
       </li>
     </ul>
     <div class="card-body">
-      <a href="#" class="card-link">{{ data }}</a>
+      <a v-bind:href="card.link" class="card-link">{{ card.link }}</a>
       <a href="#" class="card-link">Another link</a>
     </div>
   </div>
@@ -38,7 +37,7 @@ import FiveStars from "./FiveStars.vue";
 export default {
   components: { FiveStars },
   name: "SkillCardV2",
-  props: ["data"],
+  props: ["card"],
   data() {
     return {};
   },
