@@ -4,7 +4,7 @@ export default (ctx, inject) => {
   const repositoryWithAxios = createRepository(ctx.$axios);
 
   const repositories = {
-    // posts: repositoryWithAxios('posts'),
+    badge: repositoryWithAxios("badge"),
     user: repositoryWithAxios("user")
   };
   inject("repositories", repositories);
