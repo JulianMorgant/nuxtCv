@@ -2,7 +2,7 @@
   <div class="stars">
     <form action="">
       <label class="title">{{starsData.label}}</label>
-      </BR>
+      <BR/>
       <input class="star star-5" id="star[5]" type="radio" name="star" v-model="starsData.number" value = "5" disabled/>
       <label class="star star-5" for="star[5]"></label>
       <input class="star star-4" id="star4" type="radio" name="star" v-model="starsData.number" value = "4" disabled/>
